@@ -1,4 +1,4 @@
-DOTFILES=(.railsrc .vim .vimrc .zshrc .aliases.zsh)
+DOTFILES=(.railsrc .tmux.conf .vim .vimrc .zshrc .aliases.zsh)
 
 for file in ${DOTFILES[@]}
 do
