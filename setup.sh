@@ -1,6 +1,12 @@
-DOTFILES=(.railsrc .tmux.conf .vim .vimrc .zshrc .aliases.zsh)
+#!/bin/bash
 
-for file in ${DOTFILES[@]}
+for file in .??*
 do
-  ln -s $HOME/dotfiles/$file $HOME/$file
+  filepath="${PWD}/${file}"
+
+  [[ "$file" == ".git" ]] && continue
+  [[ "$file" == ".gitignore" ]] && continue
+  [[ "$file" == ".DS_Store" ]] && continue
+
+  ln -s $filepath $HOME/$file
 done
