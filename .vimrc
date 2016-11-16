@@ -17,6 +17,9 @@ Plug 'kien/ctrlp.vim'
 " Edit
 Plug 'tpope/vim-surround'
 
+" Go
+Plug 'fatih/vim-go'
+
 " Rust
 Plug 'rust-lang/rust.vim'
 
