@@ -69,14 +69,24 @@ imap [ []<LEFT>
 imap ( ()<LEFT>
 
 
-" Unit.vim
+" unit.vim
 " start in input mode
 let g:unite_enable_start_insert=1
+" launch with Space + u?
+nnoremap <silent> <Space>ub :Unite buffer<CR>
+nnoremap <silent> <Space>uf :UniteWithBufferDir file<CR>
+
+
+" neomru.vim
+" display limit
+let g:unite_source_file_mru_limit = 200
+" launch with Space + m
+nnoremap <silent> <Space>m :Unite file_mru<CR>
 
 
 " NERDTree
-" launch with Control + n
-noremap <C-n> :NERDTreeToggle<CR>
+" launch with Space + n
+nnoremap <silent> <Space>n :NERDTreeToggle<CR>
 
 
 " vim-indent-guides
