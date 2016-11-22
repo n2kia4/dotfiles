@@ -54,6 +54,7 @@ set tabstop=2                   " tab width
 set shiftwidth=2                " tab width
 set smarttab                    " tab width
 set backspace=indent,eol,start  " back space
+set t_Co=256
 set background=dark            " color scheme
 syntax enable
 colorscheme solarized
