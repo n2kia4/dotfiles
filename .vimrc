@@ -12,6 +12,10 @@ Plug 'Shougo/neomru.vim'
 " Visualize indent
 Plug 'nathanaelkane/vim-indent-guides'
 
+" Status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " File search
 Plug 'kien/ctrlp.vim'
 
@@ -97,3 +101,7 @@ let g:indent_guides_exclude_filetypes = ['nerdtree']
 let g:indent_guides_auto_colors=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=240
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=245
+
+" vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
