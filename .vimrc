@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 " Display the files in tree type
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " Integrated user interface
 Plug 'Shougo/unite.vim'
 " Display recently used files
