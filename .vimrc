@@ -92,6 +92,8 @@ nnoremap <silent> <Space>m :Unite file_mru<CR>
 " NERDTree
 " launch with Space + n
 nnoremap <silent> <Space>n :NERDTreeToggle<CR>
+" display dotfiles
+let NERDTreeShowHidden=1
 
 
 " vim-indent-guides
