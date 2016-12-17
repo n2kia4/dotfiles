@@ -10,6 +10,12 @@ alias vi='vim'
 alias chrome='open -a Google\ Chrome'
 alias safari='open -a Safari'
 
+# Rust
+alias cb='cargo build'
+alias cbr='cargo build --release'
+alias cr='cargo run'
+alias crr='cargo run --release'
+
 # Ruby / Ruby on Rails
 alias b='bundle'
 alias be='bundle exec'
