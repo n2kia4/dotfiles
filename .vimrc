@@ -75,8 +75,6 @@ imap ( ()<LEFT>
 
 
 " unit.vim
-" start in input mode
-let g:unite_enable_start_insert=1
 " launch with Space + u?
 nnoremap <silent> <Space>ub :Unite buffer<CR>
 nnoremap <silent> <Space>uf :UniteWithBufferDir file<CR>
