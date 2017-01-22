@@ -32,6 +32,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
 
+" Scala
+Plug 'derekwyatt/vim-scala'
+
 call plug#end()
 "End vim-plug-------------------"
 
