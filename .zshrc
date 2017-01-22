@@ -20,7 +20,7 @@ setopt extended_history
 
 # cd -> ls
 chpwd() {
-  ls -AF
+  gls -AF --color=auto
 }
 
 # variable
@@ -51,3 +51,10 @@ eval "$(rbenv init -)"
 # Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+# dircolors
+eval $(gdircolors ~/dircolors-solarized/dircolors.ansi-universal)
+
+if [ -n "$LS_COLORS" ]; then
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
