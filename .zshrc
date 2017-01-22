@@ -33,6 +33,9 @@ HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=100000
 
+# Java
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
