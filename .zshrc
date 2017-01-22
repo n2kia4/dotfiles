@@ -18,6 +18,11 @@ setopt hist_ignore_space
 setopt share_history
 setopt extended_history
 
+# cd -> ls
+chpwd() {
+  ls -AF
+}
+
 # variable
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
