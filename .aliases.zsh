@@ -11,6 +11,9 @@ alias vi='vim'
 alias chrome='open -a Google\ Chrome'
 alias safari='open -a Safari'
 
+# Python
+alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
+
 # Rust
 alias cb='cargo build'
 alias cbr='cargo build --release'
