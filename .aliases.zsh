@@ -10,6 +10,7 @@ alias vi='vim'
 # Web Browser
 alias chrome='open -a Google\ Chrome'
 alias safari='open -a Safari'
+alias firefox='open -a Firefox'
 
 # Python
 alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
