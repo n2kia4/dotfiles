@@ -41,10 +41,6 @@ SAVEHIST=100000
 # Java
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
-# Python
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
