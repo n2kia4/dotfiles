@@ -18,9 +18,14 @@ setopt hist_ignore_space
 setopt share_history
 setopt extended_history
 
-# cd -> ls
 chpwd() {
+  # cd -> ls
   gls -AF --color=auto
+
+  # auto: source venv/bin/activate
+  if [ -d venv ]; then
+    source venv/bin/activate
+  fi
 }
 
 # variable
