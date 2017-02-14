@@ -62,8 +62,9 @@ set tabstop=2                   " tab width
 set shiftwidth=2                " tab width
 set smarttab                    " tab width
 set backspace=indent,eol,start  " back space
+set ignorecase                  " ignore case of search
 set t_Co=256
-set background=dark            " color scheme
+set background=dark             " color scheme
 syntax enable
 colorscheme solarized
 let g:solarized_termtrans=1
@@ -75,6 +76,11 @@ highlight LineNr ctermfg=darkyellow
 imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>
+
+" Search
+" auto escape
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
+cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 
 
 " unit.vim
