@@ -25,6 +25,11 @@ Plug 'tpope/vim-surround'
 " Go
 Plug 'fatih/vim-go'
 
+" Python
+Plug 'davidhalter/jedi-vim'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'Vimjas/vim-python-pep8-indent'
+
 " Rust
 Plug 'rust-lang/rust.vim'
 
@@ -111,6 +116,15 @@ let g:indent_guides_auto_colors=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=240
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=245
 
+
 " vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
+
+
+" Python
+" jedi-vim
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#goto_definitions_command = "<leader>t"
