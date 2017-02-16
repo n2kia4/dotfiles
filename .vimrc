@@ -28,7 +28,6 @@ Plug 'fatih/vim-go'
 " Python
 Plug 'davidhalter/jedi-vim'
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'Vimjas/vim-python-pep8-indent'
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -39,6 +38,9 @@ Plug 'tpope/vim-endwise'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
+
+" Syntax
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 "End vim-plug-------------------"
@@ -128,3 +130,6 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_definitions_command = "<leader>t"
+
+" syntastic
+let g:syntastic_python_checkers = ["flake8"]
