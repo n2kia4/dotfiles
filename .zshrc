@@ -22,9 +22,11 @@ chpwd() {
   # cd -> ls
   gls -AF --color=auto
 
-  # auto: source venv/bin/activate
+  # Automatically activate and deactivate
   if [ -d venv ]; then
     source venv/bin/activate
+  elif [ "$VIRTUAL_ENV" != "" ]; then
+    deactivate
   fi
 }
 
