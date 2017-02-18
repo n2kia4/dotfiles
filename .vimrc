@@ -28,6 +28,7 @@ Plug 'fatih/vim-go'
 " Python
 Plug 'davidhalter/jedi-vim'
 Plug 'jmcantrell/vim-virtualenv'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Rust
 Plug 'rust-lang/rust.vim'
