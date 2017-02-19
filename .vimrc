@@ -126,6 +126,8 @@ let g:airline_theme = 'solarized'
 
 
 " Python
+autocmd FileType python setlocal completeopt-=preview
+
 " jedi-vim
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_select_first = 0
