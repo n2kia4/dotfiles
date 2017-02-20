@@ -1,5 +1,5 @@
 [user]
-	name = Natsuki Tanaka
+  name = Natsuki Tanaka
   email = n2kia4@gmail.com
 [color]
   ui = auto
@@ -11,10 +11,9 @@
   changed = green
   untracked = cyan
 [alias]
-	co = checkout
-	st = status
-	ci = commit
-	di = diff
+  co = checkout
+  st = status
+  ci = commit
+  di = diff
   br = branch
   ls = ls-files
-
