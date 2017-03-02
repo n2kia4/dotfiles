@@ -34,8 +34,10 @@ chpwd() {
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
 # prompt
-PROMPT="%{${fg[yellow]}%}[%n] %~
-$%{${reset_color}%} "
+PROMPT="%{$fg[red]%}[%n]%{$reset_color%}@%{$fg[blue]%}[%m]%{$reset_color%}:%{$fg[magenta]%}%~
+%{${reset_color}%}$ "
+
+RPROMPT="[%{$fg[yellow]%}%D{%m/%d %H:%M}%{$reset_color%}]"
 
 # alias 
 source $HOME/.aliases.zsh
