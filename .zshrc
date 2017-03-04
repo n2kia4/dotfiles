@@ -67,3 +67,22 @@ eval $(gdircolors ~/dircolors-solarized/dircolors.ansi-universal)
 if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
+
+
+# Tmux
+if tmux has-session &>/dev/null && tmux list-sessions | grep -qE '.*]$'; then
+    tmux list-sessions | perl -pe 's/(^.*?):/\033[31m$1:\033[m/'
+    printf "\x1b[37mTmux: attach? (y/N/num)\x1b[0m "
+    read
+    if [[ $REPLY =~ ^[Yy]$ || $REPLY == '' ]]; then
+        if tmux attach-session; then
+            echo "$(tmux -V) attached session"
+            return 0
+        fi
+    elif tmux list-sessions | grep -q "^$REPLY:"; then
+        if tmux attach -t "$REPLY"; then
+            echo "$(tmux -V) attached session"
+            return 0
+        fi
+    fi
+fi
