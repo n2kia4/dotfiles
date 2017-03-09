@@ -20,18 +20,6 @@ setopt share_history
 setopt extended_history
 setopt prompt_subst
 
-chpwd() {
-  # cd -> ls
-  gls -AF --color=auto
-
-  # Automatically activate and deactivate
-  if [ -d venv ]; then
-    source venv/bin/activate
-  elif [ "$VIRTUAL_ENV" != "" ]; then
-    deactivate
-  fi
-}
-
 # variable
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
@@ -89,3 +77,21 @@ if [ -z "$TMUX" ]; then
         tmux new-session && echo "$(tmux -V) created new session"
     fi
 fi
+
+
+# cd -> ls
+_cd_ls() {
+    gls -AF --color=auto
+}
+add-zsh-hook chpwd _cd_ls
+
+
+# Automatically activate and deactivate
+_auto_activate_deactivate() {
+    if [ -d venv ]; then
+        source venv/bin/activate
+    elif [ "$VIRTUAL_ENV" != "" ]; then
+        deactivate
+    fi
+}
+add-zsh-hook chpwd _auto_activate_deactivate
