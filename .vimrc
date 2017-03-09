@@ -43,6 +43,9 @@ Plug 'derekwyatt/vim-scala'
 " Syntax
 Plug 'vim-syntastic/syntastic'
 
+" Colorscheme
+Plug 'altercation/vim-colors-solarized'
+
 call plug#end()
 "End vim-plug-------------------"
 
