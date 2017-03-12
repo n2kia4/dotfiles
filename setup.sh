@@ -1,5 +1,22 @@
 #!/bin/bash
 
+DOTFILES_PATH="$HOME/dotfiles"
+
+# Download dotfiles
+if [ -d $DOTFILES_PATH ]; then
+    echo "[SKIP] Download dotfiles"
+else
+    echo "Downloading dotfiles..."
+    if type git > /dev/null 2>&1; then
+        git clone https://github.com/n2kia4/dotfiles.git
+    else
+        curl -sL https://github.com/n2kia4/dotfiles/archive/master.tar.gz | tar xz
+    fi
+    echo "[OK] Download dotfiles"
+fi
+
+cd $DOTFILES_PATH
+
 # Symbolic link
 for file in .??*
 do
