@@ -60,7 +60,7 @@ fi
 if [ -z "$TMUX" ]; then
     if tmux has-session &>/dev/null && tmux list-sessions | grep -qE '.*]$'; then
         tmux list-sessions | perl -pe 's/(^.*?):/\033[31m$1:\033[m/'
-        printf "\x1b[37mTmux: attach? (y/N/num)\x1b[0m "
+        printf "\x1b[37mtmux: attach? (y/N/num)\x1b[0m "
         read
         if [[ $REPLY =~ ^[Yy]$ || $REPLY == '' ]]; then
             if tmux attach-session; then
@@ -74,7 +74,14 @@ if [ -z "$TMUX" ]; then
             fi
         fi
     else
-        tmux new-session && echo "$(tmux -V) created new session"
+        tmux ls
+        printf "\x1b[37mtmux: create new session? (y/N)\x1b[0m "
+        read
+        if [[ $REPLY =~ ^[Yy]$ || $REPLY == '' ]]; then
+            tmux new-session && echo "$(tmux -V) created new session"
+        else
+          return 0
+        fi
     fi
 fi
 
