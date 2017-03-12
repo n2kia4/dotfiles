@@ -20,13 +20,13 @@ cd $DOTFILES_PATH
 # Symbolic link
 for file in .??*
 do
-  filepath="${PWD}/${file}"
+    filepath="${PWD}/${file}"
 
-  [[ "$file" == ".git" ]] && continue
-  [[ "$file" == ".gitignore" ]] && continue
-  [[ "$file" == ".DS_Store" ]] && continue
+    [[ "$file" == ".git" ]] && continue
+    [[ "$file" == ".gitignore" ]] && continue
+    [[ "$file" == ".DS_Store" ]] && continue
 
-  ln -sfnv $filepath $HOME/$file
+    ln -sfnv $filepath $HOME/$file
 done
 echo "[OK] Symbolic link"
 

@@ -69,8 +69,8 @@ set hidden                      " edit multiple files
 set list                        " display invisible
 set listchars=tab:>\ ,extends:< " display invisible
 set showmatch                   " highlight the ()
-set tabstop=2                   " tab width
-set shiftwidth=2                " tab width
+set tabstop=4                   " tab width
+set shiftwidth=4                " tab width
 set smarttab                    " tab width
 set backspace=indent,eol,start  " back space
 set ignorecase                  " ignore case of search

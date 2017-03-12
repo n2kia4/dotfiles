@@ -52,7 +52,7 @@ export PATH=$PATH:$GOPATH/bin
 eval $(gdircolors ~/dircolors-solarized/dircolors.ansi-universal)
 
 if [ -n "$LS_COLORS" ]; then
-  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
 
 
@@ -80,7 +80,7 @@ if [ -z "$TMUX" ]; then
         if [[ $REPLY =~ ^[Yy]$ || $REPLY == '' ]]; then
             tmux new-session && echo "$(tmux -V) created new session"
         else
-          return 0
+            clear
         fi
     fi
 fi
