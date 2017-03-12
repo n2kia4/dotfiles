@@ -60,3 +60,14 @@ fi
 # Install Vim plugin
 vim +PlugInstall +qall
 echo "[OK] Install Vim plugin"
+
+# Change the login shell
+if [ $SHELL == $(which zsh) ]; then
+    echo "[SKIP] Change the login shell"
+else
+    grep "$(which zsh)" /etc/shells &>/dev/null || sudo sh -c "echo $(which zsh) >> /etc/shells"
+    chsh -s $(which zsh)
+    echo "[OK] Change the login shell"
+fi
+
+exec $(which zsh)
