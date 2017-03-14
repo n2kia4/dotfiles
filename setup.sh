@@ -11,6 +11,7 @@ download_dotfiles() {
             git clone https://github.com/n2kia4/dotfiles.git
         else
             curl -sL https://github.com/n2kia4/dotfiles/archive/master.tar.gz | tar xz
+            mv dotfiles-master dotfiles
         fi
         echo "[OK] Download dotfiles"
     fi
@@ -27,7 +28,7 @@ symbolic_links() {
 
         ln -sfnv $filepath $HOME/$file
     done
-    echo "[OK] create symbolic links"
+    echo "[OK] Create symbolic links"
 }
 
 install_homebrew() {
@@ -51,9 +52,9 @@ install_homebrew() {
         # Install packages
         echo "Installing packages..."
         brew install \
-            autoconf coreutils git go openssl \
+            autoconf coreutils git go hub openssl \
             python python3 rbenv readline ruby-build \
-            sbt tmux vim zsh
+            sbt sqlite tmux tree vim zsh
         echo "[OK] Install Packages"
     fi
 }
@@ -63,11 +64,16 @@ install_vim_plugins() {
     echo "[OK] Install Vim plugins"
 }
 
+update_vim_plugins() {
+    vim +PlugUpdate +qall
+    echo "[OK] Update Vim plugins"
+}
+
 change_login_shell() {
-    if [ $SHELL == $(which zsh) ]; then
+    if grep "$(which zsh)" /etc/shells &>/dev/null; then
         echo "[SKIP] Change the login shell"
     else
-        grep "$(which zsh)" /etc/shells &>/dev/null || sudo sh -c "echo $(which zsh) >> /etc/shells"
+        sudo sh -c "echo $(which zsh) >> /etc/shells"
         chsh -s $(which zsh)
         echo "[OK] Change the login shell"
     fi
@@ -84,7 +90,7 @@ main() {
     update_vim_plugins
     change_login_shell
 
-    exec $(which zsh)
+    echo "Done. Please run: exec $(which zsh)"
 }
 
 main
