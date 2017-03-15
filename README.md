@@ -18,3 +18,7 @@ The setup list is this:
 - Install Vim plugins
 - Update Vim plugins
 - Change the login shell
+
+## Author
+
+Natsuki Tanaka (n2kia4)
