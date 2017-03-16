@@ -54,13 +54,24 @@ install_homebrew() {
 
     echo "Run brew doctor..."
     brew doctor
+}
 
+install_packages() {
     echo "Installing packages..."
-    brew install \
+    packages=(
         autoconf coreutils git go hub openssl \
         python python3 rbenv readline ruby-build \
         sbt sqlite tmux tree vim zsh
-    echo "[OK] Install Packages"
+    )
+    for package in "${packages[@]}"; do
+        if brew list "$package" > /dev/null 2>&1; then
+            echo "[SKIP] $package: already installed"
+        elif brew install $package > /dev/null 2>&1; then
+            echo "[OK] $package: successfully installed"
+        else
+            echo "[ERROR] $package: unsuccessfully installed"
+        fi
+    done
 }
 
 install_vim_plugins() {
@@ -94,6 +105,7 @@ main() {
     download_dotfiles
     symbolic_links
     install_homebrew
+    install_packages
     install_vim_plugins
     update_vim_plugins
     change_login_shell
