@@ -2,17 +2,29 @@
 
 DOTFILES_PATH="$HOME/dotfiles"
 
+print_error() {
+    printf "\033[31m[ERROR] $1\033[m\n"
+}
+
+print_success() {
+    printf "\033[32m[OK] $1\033[m\n"
+}
+
+print_warning() {
+    printf "\033[33m[SKIP] $1\033[m\n"
+}
+
 check_os() {
     os_name="$(uname)"
     if [ "$os_name" != "Darwin" ]; then
-        echo "Sorry, this script is intended only for macOS"
+        print_error "Sorry, this script is intended only for macOS"
         exit 1
     fi
 }
 
 download_dotfiles() {
     if [ -d $DOTFILES_PATH ]; then
-        echo "[SKIP] Download dotfiles"
+        print_warning "Download dotfiles"
     else
         echo "Downloading dotfiles..."
         if type git > /dev/null 2>&1; then
@@ -21,7 +33,7 @@ download_dotfiles() {
             curl -sL https://github.com/n2kia4/dotfiles/archive/master.tar.gz | tar xz
             mv dotfiles-master dotfiles
         fi
-        echo "[OK] Download dotfiles"
+        print_success "[OK] Download dotfiles"
     fi
     cd $DOTFILES_PATH
 }
@@ -37,16 +49,16 @@ symbolic_links() {
 
         ln -sfnv $filepath $HOME/$file
     done
-    echo "[OK] Create symbolic links"
+    print_success "Create symbolic links"
 }
 
 install_homebrew() {
     if type brew > /dev/null 2>&1; then
-        echo "[SKIP] Install Homebrew"
+        print_warning "Install Homebrew"
     else
         echo "Installing Homebrew..."
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        echo "[OK] Install Homebrew"
+        print_success "Install Homebrew"
     fi
 
     echo "Run brew update..."
@@ -65,11 +77,11 @@ install_packages() {
     )
     for package in "${packages[@]}"; do
         if brew list "$package" > /dev/null 2>&1; then
-            echo "[SKIP] $package: already installed"
+            print_warning "$package: already installed"
         elif brew install $package > /dev/null 2>&1; then
-            echo "[OK] $package: successfully installed"
+            print_success "$package: successfully installed"
         else
-            echo "[ERROR] $package: unsuccessfully installed"
+            print_error "$package: unsuccessfully installed"
         fi
     done
 }
@@ -77,22 +89,22 @@ install_packages() {
 install_vim_plugins() {
     echo "Installing Vim plugins..."
     vim +PlugInstall +qall > /dev/null 2>&1
-    echo "[OK] Install Vim plugins"
+    print_success "Install Vim plugins"
 }
 
 update_vim_plugins() {
     echo "Updating Vim plugins..."
     vim +PlugUpdate +qall > /dev/null 2>&1
-    echo "[OK] Update Vim plugins"
+    print_success "Update Vim plugins"
 }
 
 change_login_shell() {
     if grep "$(which zsh)" /etc/shells &>/dev/null; then
-        echo "[SKIP] Change the login shell"
+        print_warning "Change the login shell"
     else
         sudo sh -c "echo $(which zsh) >> /etc/shells"
         chsh -s $(which zsh)
-        echo "[OK] Change the login shell"
+        print_success " Change the login shell"
     fi
 }
 
