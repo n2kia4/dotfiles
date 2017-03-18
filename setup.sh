@@ -14,6 +14,10 @@ print_warning() {
     printf "\033[33m    [SKIP] $1\033[m\n"
 }
 
+print_title() {
+    printf "\n\n\033[35m$1\033[m\n\n"
+}
+
 print_message() {
     printf "    $1\n"
 }
@@ -27,6 +31,7 @@ check_os() {
 }
 
 download_dotfiles() {
+    print_title "---Download dotfiles---"
     if [ -d $DOTFILES_PATH ]; then
         print_warning "dotfiles: already exists"
     else
@@ -43,6 +48,7 @@ download_dotfiles() {
 }
 
 symbolic_links() {
+    print_title "---Create symbolic links---"
     for file in .??*
     do
         filepath="${PWD}/${file}"
@@ -57,6 +63,7 @@ symbolic_links() {
 }
 
 install_homebrew() {
+    print_title "---Homebrew---"
     if type brew > /dev/null 2>&1; then
         print_warning "Homebrew: already installed"
     else
@@ -73,6 +80,7 @@ install_homebrew() {
 }
 
 install_packages() {
+    print_title "---Packages---"
     print_message "Installing packages..."
     packages=(
         autoconf coreutils git go hub openssl \
@@ -91,6 +99,7 @@ install_packages() {
 }
 
 install_vim_plugins() {
+    print_title "---Vim---"
     print_message "Installing Vim plugins..."
     vim +PlugInstall +qall > /dev/null 2>&1
     print_success "successfully installed"
@@ -103,6 +112,7 @@ update_vim_plugins() {
 }
 
 change_login_shell() {
+    print_title "---zsh---"
     if [ $SHELL == $(which zsh) ]; then
         print_warning "Login shell: already zsh"
     else
