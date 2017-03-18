@@ -14,6 +14,10 @@ print_warning() {
     printf "\033[33m    [SKIP] $1\033[m\n"
 }
 
+print_message() {
+    printf "    $1\n"
+}
+
 check_os() {
     os_name="$(uname)"
     if [ "$os_name" != "Darwin" ]; then
@@ -26,7 +30,7 @@ download_dotfiles() {
     if [ -d $DOTFILES_PATH ]; then
         print_warning "dotfiles: already exists"
     else
-        echo "Downloading dotfiles..."
+        print_message "Downloading dotfiles..."
         if type git > /dev/null 2>&1; then
             git clone https://github.com/n2kia4/dotfiles.git
         else
@@ -56,20 +60,20 @@ install_homebrew() {
     if type brew > /dev/null 2>&1; then
         print_warning "Homebrew: already installed"
     else
-        echo "Installing Homebrew..."
+        print_message "Installing Homebrew..."
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         print_success "successfully installed"
     fi
 
-    echo "Run brew update..."
+    print_message "Run brew update..."
     brew update
 
-    echo "Run brew doctor..."
+    print_message "Run brew doctor..."
     brew doctor
 }
 
 install_packages() {
-    echo "Installing packages..."
+    print_message "Installing packages..."
     packages=(
         autoconf coreutils git go hub openssl \
         python python3 rbenv readline ruby-build \
@@ -87,13 +91,13 @@ install_packages() {
 }
 
 install_vim_plugins() {
-    echo "Installing Vim plugins..."
+    print_message "Installing Vim plugins..."
     vim +PlugInstall +qall > /dev/null 2>&1
     print_success "successfully installed"
 }
 
 update_vim_plugins() {
-    echo "Updating Vim plugins..."
+    print_message "Updating Vim plugins..."
     vim +PlugUpdate +qall > /dev/null 2>&1
     print_success "successfully updated"
 }
@@ -102,6 +106,7 @@ change_login_shell() {
     if [ $SHELL == $(which zsh) ]; then
         print_warning "Login shell: already zsh"
     else
+        print_message "Changing login shell..."
         grep "$(which zsh)" /etc/shells &>/dev/null || sudo sh -c "echo $(which zsh) >> /etc/shells"
         chsh -s $(which zsh)
         print_success "successfully changed to zsh"
