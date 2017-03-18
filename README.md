@@ -15,6 +15,7 @@ The setup list is this:
 - Download dotfiles
 - Create symbolic links
 - Install Homebrew
+- Install packages
 - Install Vim plugins
 - Update Vim plugins
 - Change the login shell
