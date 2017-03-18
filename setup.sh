@@ -3,15 +3,15 @@
 DOTFILES_PATH="$HOME/dotfiles"
 
 print_error() {
-    printf "\033[31m    [ERROR] $1\033[m\n"
+    printf "\033[31m    [×] $1\033[m\n"
 }
 
 print_success() {
-    printf "\033[32m    [OK] $1\033[m\n"
+    printf "\033[32m    [✓] $1\033[m\n"
 }
 
 print_warning() {
-    printf "\033[33m    [SKIP] $1\033[m\n"
+    printf "\033[33m    [!] $1\033[m\n"
 }
 
 print_title() {
