@@ -57,9 +57,9 @@ symbolic_links() {
         [[ "$file" == ".gitignore" ]] && continue
         [[ "$file" == ".DS_Store" ]] && continue
 
-        ln -sfnv $filepath $HOME/$file
+        ln -sfn $filepath $HOME/$file
+        print_success "$HOME/$file -> $filepath"
     done
-    print_success "successfully created"
 }
 
 install_homebrew() {
@@ -72,11 +72,19 @@ install_homebrew() {
         print_success "successfully installed"
     fi
 
-    print_message "Run brew update..."
-    brew update
+    print_message "brew update..."
+    if brew update > /dev/null 2>&1; then
+        print_success "successfully updated"
+    else
+        print_error "unsuccessfully updated"
+    fi
 
-    print_message "Run brew doctor..."
-    brew doctor
+    print_message "brew doctor..."
+    if brew doctor > /dev/null 2>&1; then
+        print_success "ready to brew"
+    else
+        print_error "not ready to brew"
+    fi
 }
 
 install_packages() {
@@ -101,14 +109,20 @@ install_packages() {
 install_vim_plugins() {
     print_title "---Vim---"
     print_message "Installing Vim plugins..."
-    vim +PlugInstall +qall > /dev/null 2>&1
-    print_success "successfully installed"
+    if vim +PlugInstall +qall > /dev/null 2>&1; then
+        print_success "successfully installed"
+    else
+        print_error "unsuccessfully installed"
+    fi
 }
 
 update_vim_plugins() {
     print_message "Updating Vim plugins..."
-    vim +PlugUpdate +qall > /dev/null 2>&1
-    print_success "successfully updated"
+    if vim +PlugUpdate +qall > /dev/null 2>&1; then
+        print_success "successfully updated"
+    else
+        print_error "unsuccessfully updated"
+    fi
 }
 
 change_login_shell() {
@@ -124,6 +138,7 @@ change_login_shell() {
 }
 
 reload_shell() {
+    printf "\n\n"
     exec $(which zsh)
 }
 
