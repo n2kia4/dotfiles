@@ -20,6 +20,10 @@ The setup list is this:
 - Update Vim plugins
 - Change the login shell
 
+## Demo
+
+![gif](/doc/gif/setup.gif)
+
 ## Author
 
 Natsuki Tanaka (n2kia4)
