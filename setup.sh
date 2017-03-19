@@ -91,9 +91,10 @@ install_packages() {
     print_title "---Packages---"
     print_message "Installing packages..."
     packages=(
-        autoconf coreutils git go hub openssl \
-        python python3 rbenv readline ruby-build \
-        sbt sqlite tmux tree vim zsh
+        autoconf coreutils git gitbucket go gtk+3 hub \
+        imagemagick lua mongodb mysql openssl postgresql \
+        python python3 pwgen rbenv readline ruby-build \
+        sbt sqlite tig tmux tree vim wget zsh
     )
     for package in "${packages[@]}"; do
         if brew list "$package" > /dev/null 2>&1; then
