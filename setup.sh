@@ -1,26 +1,10 @@
 #!/bin/bash
 
+# dotfiles path
 DOTFILES_PATH="$HOME/dotfiles"
 
-print_error() {
-    printf "\033[31m    [×] $1\033[m\n"
-}
-
-print_success() {
-    printf "\033[32m    [✓] $1\033[m\n"
-}
-
-print_warning() {
-    printf "\033[33m    [!] $1\033[m\n"
-}
-
-print_title() {
-    printf "\n\n\033[35m$1\033[m\n\n"
-}
-
-print_message() {
-    printf "    $1\n"
-}
+# Load utils
+. $DOTFILES_PATH/etc/utils.sh
 
 check_os() {
     os_name="$(uname)"
@@ -44,86 +28,6 @@ download_dotfiles() {
         fi
         print_success "successfully downloaded"
     fi
-    cd $DOTFILES_PATH
-}
-
-symbolic_links() {
-    print_title "---Create symbolic links---"
-    for file in .??*
-    do
-        filepath="${PWD}/${file}"
-
-        [[ "$file" == ".git" ]] && continue
-        [[ "$file" == ".gitignore" ]] && continue
-        [[ "$file" == ".DS_Store" ]] && continue
-
-        ln -sfn $filepath $HOME/$file
-        print_success "$HOME/$file -> $filepath"
-    done
-}
-
-install_homebrew() {
-    print_title "---Homebrew---"
-    if type brew > /dev/null 2>&1; then
-        print_warning "Homebrew: already installed"
-    else
-        print_message "Installing Homebrew..."
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        print_success "successfully installed"
-    fi
-
-    print_message "brew update..."
-    if brew update > /dev/null 2>&1; then
-        print_success "successfully updated"
-    else
-        print_error "unsuccessfully updated"
-    fi
-
-    print_message "brew doctor..."
-    if brew doctor > /dev/null 2>&1; then
-        print_success "ready to brew"
-    else
-        print_error "not ready to brew"
-    fi
-}
-
-install_packages() {
-    print_title "---Packages---"
-    print_message "Installing packages..."
-    packages=(
-        autoconf coreutils git gitbucket go gtk+3 hub \
-        imagemagick lua mongodb mysql openssl postgresql \
-        python python3 pwgen rbenv readline ruby-build \
-        sbt sqlite tig tmux tree vim wget zsh
-    )
-    for package in "${packages[@]}"; do
-        if brew list "$package" > /dev/null 2>&1; then
-            print_warning "$package: already installed"
-        elif brew install $package > /dev/null 2>&1; then
-            print_success "$package: successfully installed"
-        else
-            print_error "$package: unsuccessfully installed"
-        fi
-    done
-}
-
-install_vim_plugins() {
-    print_title "---Vim---"
-    print_message "Installing Vim plugins..."
-    if vim +PlugInstall +qall > /dev/null 2>&1; then
-        print_success "successfully installed"
-    else
-        print_error "unsuccessfully installed"
-    fi
-}
-
-update_vim_plugins() {
-    print_message "Updating Vim plugins..."
-    if vim +PlugUpdate +qall > /dev/null 2>&1; then
-        print_success "successfully updated"
-    else
-        print_error "unsuccessfully updated"
-    fi
 }
 
 change_login_shell() {
@@ -146,11 +50,10 @@ reload_shell() {
 main() {
     check_os
     download_dotfiles
-    symbolic_links
-    install_homebrew
-    install_packages
-    install_vim_plugins
-    update_vim_plugins
+
+    . $DOTFILES_PATH/etc/symbolic_links.sh
+    . $DOTFILES_PATH/etc/install/main.sh
+
     change_login_shell
     reload_shell
 }
