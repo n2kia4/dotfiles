@@ -29,8 +29,12 @@ set title                       " set the window title
 set wildmenu                    " file name storage
 
 
-" Line number color
-highlight LineNr ctermfg=darkyellow
+" Do not display docstring
+autocmd FileType python setlocal completeopt-=preview
+
+"
+" Key Mappings------------------"
+"
 
 " Auto input }])
 imap { {}<LEFT>
@@ -40,9 +44,6 @@ imap ( ()<LEFT>
 " Auto escape '/' and '?'
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
-
-" Do not display docstring
-autocmd FileType python setlocal completeopt-=preview
 
 
 "
@@ -112,6 +113,10 @@ set background=dark             " dark background
 syntax enable
 colorscheme solarized
 let g:solarized_termtrans=1
+
+
+" Line number color
+highlight LineNr ctermfg=darkyellow
 
 
 " unit.vim
