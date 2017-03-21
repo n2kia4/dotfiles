@@ -1,11 +1,65 @@
+"
+" Basic settings----------------"
+"
+
+set autoindent                  " auto indent
+set backspace=indent,eol,start  " back space
+set expandtab                   " change tab into space
+set hidden                      " edit multiple files
+set hlsearch                    " highlight matches
+set ignorecase                  " ignore case of search
+set incsearch                   " do incremental searching
+set laststatus=2                " always display the status line
+set list                        " display invisible
+set listchars=tab:>\ ,extends:< " display invisible
+set nobackup                    " do not create backup file
+set noswapfile                  " do not create swap file
+set noundofile                  " do not create undo file
+set number                      " display line numbers
+set ruler                       " display the cursor position
+set shiftwidth=4                " tab width
+set showcmd                     " display incomplete commands
+set showmatch                   " highlight the ()
+set smartcase                   " ignore capital letters and child characters
+set smartindent                 " smart indent
+set smarttab                    " tab width
+set t_Co=256                    " 256 color
+set tabstop=4                   " tab width
+set title                       " set the window title
+set wildmenu                    " file name storage
+
+
+" Line number color
+highlight LineNr ctermfg=darkyellow
+
+" Auto input }])
+imap { {}<LEFT>
+imap [ []<LEFT>
+imap ( ()<LEFT>
+
+" Auto escape '/' and '?'
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
+cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+
+" Do not display docstring
+autocmd FileType python setlocal completeopt-=preview
+
+
+"
 "vim-plug-----------------------"
+"
+
 call plug#begin('~/.vim/plugged')
 
 " Display the files in tree type
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+" Display git status in NERDTree.
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " Integrated user interface
 Plug 'Shougo/unite.vim'
+
 " Display recently used files
 Plug 'Shougo/neomru.vim'
 
@@ -47,51 +101,17 @@ Plug 'vim-syntastic/syntastic'
 Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
+
+"
 "End vim-plug-------------------"
+"
 
 
-set number                      " display line numbers
-set autoindent                  " auto indent
-set smartindent                 " smart indent
-set nobackup                    " do not create backup file
-set noundofile                  " do not create undo file
-set noswapfile                  " do not create swap file
-set ruler                       " display the cursor position
-set laststatus=2                " always display the status line
-set title                       " set the window title
-set wildmenu                    " file name storage
-set showcmd                     " display incomplete commands
-set smartcase                   " ignore capital letters and child characters
-set hlsearch                    " highlight matches
-set expandtab                   " change tab into space
-set incsearch                   " do incremental searching
-set hidden                      " edit multiple files
-set list                        " display invisible
-set listchars=tab:>\ ,extends:< " display invisible
-set showmatch                   " highlight the ()
-set tabstop=4                   " tab width
-set shiftwidth=4                " tab width
-set smarttab                    " tab width
-set backspace=indent,eol,start  " back space
-set ignorecase                  " ignore case of search
-set t_Co=256
-set background=dark             " color scheme
+" Colorscheme
+set background=dark             " dark background
 syntax enable
 colorscheme solarized
 let g:solarized_termtrans=1
-
-" Line number color
-highlight LineNr ctermfg=darkyellow
-
-" Auto input }])
-imap { {}<LEFT>
-imap [ []<LEFT>
-imap ( ()<LEFT>
-
-" Search
-" auto escape
-cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
-cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 
 
 " unit.vim
@@ -128,14 +148,12 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
 
 
-" Python
-autocmd FileType python setlocal completeopt-=preview
-
 " jedi-vim
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_definitions_command = "<leader>t"
+
 
 " syntastic
 let g:syntastic_python_checkers = ["flake8"]
