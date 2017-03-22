@@ -2,6 +2,11 @@
 " Basic settings----------------"
 "
 
+" Set augroup
+augroup MyAutoCmd
+    autocmd!
+augroup END
+
 set autoindent                  " auto indent
 set backspace=indent,eol,start  " back space
 set expandtab                   " change tab into space
@@ -28,9 +33,12 @@ set tabstop=4                   " tab width
 set title                       " set the window title
 set wildmenu                    " file name storage
 
+augroup MyAutoCmd
 
-" Do not display docstring
-autocmd FileType python setlocal completeopt-=preview
+    " Do not display docstring
+    autocmd FileType python setlocal completeopt-=preview
+
+augroup END
 
 "
 " Key Mappings------------------"
