@@ -7,19 +7,33 @@ augroup MyAutoCmd
     autocmd!
 augroup END
 
+" Encoding
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,cp932,euc-jp
+
+scriptencoding utf-8
+
 set autoindent                  " auto indent
+set autoread                    " automatically reload
 set backspace=indent,eol,start  " back space
 set expandtab                   " change tab into space
+set foldenable                  " enable folding
+set foldmethod=marker
+set helplang=ja,en              " prefer Japanese help
 set hidden                      " edit multiple files
 set hlsearch                    " highlight matches
 set ignorecase                  " ignore case of search
 set incsearch                   " do incremental searching
 set laststatus=2                " always display the status line
+set lazyredraw                  " redraw only when we need to
 set list                        " display invisible
 set listchars=tab:>\ ,extends:< " display invisible
 set nobackup                    " do not create backup file
 set noswapfile                  " do not create swap file
 set noundofile                  " do not create undo file
+set novisualbell                " do not use visualbell
 set number                      " display line numbers
 set ruler                       " display the cursor position
 set shiftwidth=4                " tab width
@@ -28,17 +42,40 @@ set showmatch                   " highlight the ()
 set smartcase                   " ignore capital letters and child characters
 set smartindent                 " smart indent
 set smarttab                    " tab width
+set softtabstop=4               " tab width
+set spelllang=en,cjk            " do not check the Japanese spelling
 set t_Co=256                    " 256 color
 set tabstop=4                   " tab width
+set textwidth=0                 " maximum width of the input text
 set title                       " set the window title
+set vb t_vb=                    " do not beep
 set wildmenu                    " file name storage
+set wrap                        " wrap with a long line
+set wrapscan                    " when the search is finished, back to the top
+
+
+" Change the color after position 81
+execute "set colorcolumn=" . join(range(81, 999), ',')
+
 
 augroup MyAutoCmd
+
+    " Do not comment out with a line feed
+    autocmd BufEnter * setlocal formatoptions-=r
+    autocmd BufEnter * setlocal formatoptions-=o
+
+    " Disable cursorline with insertmode
+    autocmd WinEnter,InsertLeave * set cursorline
+    autocmd WinLeave,InsertEnter * set nocursorline
 
     " Do not display docstring
     autocmd FileType python setlocal completeopt-=preview
 
+    " Check spelling when git commit message
+    autocmd FileType gitcommit setlocal nofoldenable spell
+
 augroup END
+
 
 "
 " Key Mappings------------------"
