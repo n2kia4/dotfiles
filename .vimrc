@@ -82,9 +82,9 @@ augroup END
 "
 
 " Auto input }])
-imap { {}<LEFT>
-imap [ []<LEFT>
-imap ( ()<LEFT>
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
 
 " Auto escape '/' and '?'
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
