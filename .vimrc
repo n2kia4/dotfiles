@@ -93,6 +93,9 @@ vnoremap q; q:
 nnoremap : ;
 vnoremap : ;
 
+" Don't use Ex mode
+nnoremap Q gq
+
 " Auto input }])
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
