@@ -85,6 +85,14 @@ augroup END
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
+" Swap ; and :
+nnoremap ; :
+vnoremap ; :
+nnoremap q; q:
+vnoremap q; q:
+nnoremap : ;
+vnoremap : ;
+
 " Auto input }])
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
