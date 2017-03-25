@@ -96,6 +96,10 @@ vnoremap : ;
 " Don't use Ex mode
 nnoremap Q gq
 
+" Move to beginning and end of line
+noremap <Space>h ^
+noremap <Space>l $
+
 " Auto input }])
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
