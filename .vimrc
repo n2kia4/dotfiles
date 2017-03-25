@@ -81,6 +81,10 @@ augroup END
 " Key Mappings------------------"
 "
 
+" Disable dangerous keys
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+
 " Auto input }])
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
