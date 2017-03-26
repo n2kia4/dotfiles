@@ -85,6 +85,16 @@ augroup END
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
+" Switch j,k and gj,gk
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap gj j
+nnoremap gk k
+vnoremap gj j
+vnoremap gk k
+
 " Swap ; and :
 nnoremap ; :
 vnoremap ; :
