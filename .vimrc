@@ -100,6 +100,14 @@ nnoremap Q gq
 noremap <Space>h ^
 noremap <Space>l $
 
+" Quick save and quit
+" save
+nnoremap <silent> <Space>w :<C-u>update<CR>
+nnoremap <silent> <Space>W :<C-u>update!<CR>
+" quit
+nnoremap <silent> <Space>q :<C-u>quit<CR>
+nnoremap <silent> <Space>Q :<C-u>quit!<CR>
+
 " Auto input }])
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
