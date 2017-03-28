@@ -122,6 +122,9 @@ nnoremap <silent> <Space>Q :<C-u>quit!<CR>
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
+inoremap ' ''<LEFT>
+inoremap ` ``<LEFT>
+inoremap " ""<LEFT>
 
 " Auto escape '/' and '?'
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
@@ -202,23 +205,36 @@ highlight LineNr ctermfg=darkyellow
 
 
 " unit.vim
-" launch with Space + u?
-nnoremap <silent> <Space>ub :Unite buffer<CR>
-nnoremap <silent> <Space>uf :UniteWithBufferDir file<CR>
+" launch with Space + u
+nnoremap [unite]  <Nop>
+nmap     <Space>u [unite]
+
+nnoremap <silent> [unite]s :<C-u>Unite source<CR>
+nnoremap <silent> [unite]S :<C-u>Unite source -vertical<CR>
+nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> [unite]o :<C-u>Unite bookmark<CR>
+nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
+nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
 
 
 " neomru.vim
 " display limit
 let g:unite_source_file_mru_limit = 200
-" launch with Space + m
-nnoremap <silent> <Space>m :Unite file_mru<CR>
+" show date
+let g:neomru#time_format = "%m/%d "
+
+" launch with Space + u
+nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
+nnoremap <silent> [unite]d :<C-u>Unite directory_mru<CR>
 
 
 " NERDTree
 " launch with Space + n
-nnoremap <silent> <Space>n :NERDTreeToggle<CR>
+nnoremap <silent> <Space>n :<C-u>NERDTreeToggle<CR>
 " display dotfiles
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
+let NERDTreeIgnore     = ['\.git$', '\.DS_Store$']
 
 
 " vim-indent-guides
@@ -226,8 +242,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level=2
 let g:indent_guides_exclude_filetypes = ['nerdtree']
 let g:indent_guides_auto_colors=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=240
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=245
+autocmd MyAutoCmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=240
+autocmd MyAutoCmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=245
 
 
 " vim-airline
