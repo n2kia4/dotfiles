@@ -162,6 +162,9 @@ Plug 'kien/ctrlp.vim'
 " Edit
 Plug 'tpope/vim-surround'
 
+" Japanese help
+Plug 'vim-jp/vimdoc-ja'
+
 " Go
 Plug 'fatih/vim-go'
 
