@@ -161,7 +161,7 @@ augroup MyAutoCmd
     autocmd WinEnter,InsertLeave * set cursorline
     autocmd WinLeave,InsertEnter * set nocursorline
 
-    " File Type: {{{
+    " File Type: {{{3
 
     " CSS
     autocmd FileType css setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
