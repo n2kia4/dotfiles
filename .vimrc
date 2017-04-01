@@ -161,11 +161,39 @@ augroup MyAutoCmd
     autocmd WinEnter,InsertLeave * set cursorline
     autocmd WinLeave,InsertEnter * set nocursorline
 
-    " Do not display docstring
-    autocmd FileType python setlocal completeopt-=preview
+    " File Type: {{{
+
+    " CSS
+    autocmd FileType css setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
+
+    " Go
+    autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+
+    " HTML, Haml
+    autocmd FileType html,haml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+
+    " JavaScript
+    autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+
+    " Python
+    autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 completeopt-=preview
+
+    " Ruby
+    autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+
+    " Rust
+    autocmd FileType rust setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
+
+    " Sass
+    autocmd FileType scss setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+
+    " Scala
+    autocmd FileType scala setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
 
     " Check spelling when git commit message
     autocmd FileType gitcommit setlocal nofoldenable spell
+
+    " }}}
 
 augroup END
 
