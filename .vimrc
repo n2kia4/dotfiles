@@ -1,13 +1,9 @@
-"
-" Basic settings----------------"
-"
+" ------------------------------------------------------------------------------
+" Basic Settings: {{{1
 
-" Set augroup
-augroup MyAutoCmd
-    autocmd!
-augroup END
+" ------------------------------------------------------------------------------
+" Encoding: {{{2
 
-" Encoding
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
@@ -15,125 +11,22 @@ set fileencodings=utf-8,cp932,euc-jp
 
 scriptencoding utf-8
 
-set autoindent                  " auto indent
-set autoread                    " automatically reload
-set backspace=indent,eol,start  " back space
-set expandtab                   " change tab into space
-set foldenable                  " enable folding
-set foldmethod=marker
-set helplang=ja,en              " prefer Japanese help
-set hidden                      " edit multiple files
-set hlsearch                    " highlight matches
-set ignorecase                  " ignore case of search
-set incsearch                   " do incremental searching
-set laststatus=2                " always display the status line
-set lazyredraw                  " redraw only when we need to
-set list                        " display invisible
-set listchars=tab:>\ ,extends:< " display invisible
-set nobackup                    " do not create backup file
-set noswapfile                  " do not create swap file
-set noundofile                  " do not create undo file
-set novisualbell                " do not use visualbell
-set number                      " display line numbers
-set ruler                       " display the cursor position
-set shiftwidth=4                " tab width
-set showcmd                     " display incomplete commands
-set showmatch                   " highlight the ()
-set smartcase                   " ignore capital letters and child characters
-set smartindent                 " smart indent
-set smarttab                    " tab width
-set softtabstop=4               " tab width
-set spelllang=en,cjk            " do not check the Japanese spelling
-set t_Co=256                    " 256 color
-set tabstop=4                   " tab width
-set textwidth=0                 " maximum width of the input text
-set title                       " set the window title
-set vb t_vb=                    " do not beep
-set wildmenu                    " file name storage
-set wrap                        " wrap with a long line
-set wrapscan                    " when the search is finished, back to the top
+" }}}
 
-
-" Change the color after position 81
-execute "set colorcolumn=" . join(range(81, 999), ',')
-
+" ------------------------------------------------------------------------------
+" Set Augroup: {{{2
 
 augroup MyAutoCmd
-
-    " Do not comment out with a line feed
-    autocmd BufEnter * setlocal formatoptions-=r
-    autocmd BufEnter * setlocal formatoptions-=o
-
-    " Disable cursorline with insertmode
-    autocmd WinEnter,InsertLeave * set cursorline
-    autocmd WinLeave,InsertEnter * set nocursorline
-
-    " Do not display docstring
-    autocmd FileType python setlocal completeopt-=preview
-
-    " Check spelling when git commit message
-    autocmd FileType gitcommit setlocal nofoldenable spell
-
+    autocmd!
 augroup END
 
+" }}}"
 
-"
-" Key Mappings------------------"
-"
+" ------------------------------------------------------------------------------
+" Vim Plug: {{{2
 
-" Disable dangerous keys
-nnoremap ZZ <Nop>
-nnoremap ZQ <Nop>
-
-" Switch j,k and gj,gk
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-nnoremap gj j
-nnoremap gk k
-vnoremap gj j
-vnoremap gk k
-
-" Swap ; and :
-nnoremap ; :
-vnoremap ; :
-nnoremap q; q:
-vnoremap q; q:
-nnoremap : ;
-vnoremap : ;
-
-" Don't use Ex mode
-nnoremap Q gq
-
-" Move to beginning and end of line
-noremap <Space>h ^
-noremap <Space>l $
-
-" Quick save and quit
-" save
-nnoremap <silent> <Space>w :<C-u>update<CR>
-nnoremap <silent> <Space>W :<C-u>update!<CR>
-" quit
-nnoremap <silent> <Space>q :<C-u>quit<CR>
-nnoremap <silent> <Space>Q :<C-u>quit!<CR>
-
-" Auto input }])
-inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap ' ''<LEFT>
-inoremap ` ``<LEFT>
-inoremap " ""<LEFT>
-
-" Auto escape '/' and '?'
-cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
-cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
-
-
-"
-"vim-plug-----------------------"
-"
+" Disable file type detection
+filetype off
 
 call plug#begin('~/.vim/plugged')
 
@@ -191,23 +84,155 @@ Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
-"
-"End vim-plug-------------------"
-"
+" Enable file type detection
+filetype plugin indent on
 
+" }}}
 
-" Colorscheme
+" ------------------------------------------------------------------------------
+" Options: {{{2
+
+set autoindent                  " auto indent
+set autoread                    " automatically reload
+set backspace=indent,eol,start  " back space
+set expandtab                   " change tab into space
+set foldenable                  " enable folding
+set foldmethod=marker
+set helplang=ja,en              " prefer Japanese help
+set hidden                      " edit multiple files
+set hlsearch                    " highlight matches
+set ignorecase                  " ignore case of search
+set incsearch                   " do incremental searching
+set laststatus=2                " always display the status line
+set lazyredraw                  " redraw only when we need to
+set list                        " display invisible
+set listchars=tab:>\ ,extends:< " display invisible
+set nobackup                    " do not create backup file
+set noswapfile                  " do not create swap file
+set noundofile                  " do not create undo file
+set novisualbell                " do not use visualbell
+set number                      " display line numbers
+set ruler                       " display the cursor position
+set shiftwidth=4                " tab width
+set showcmd                     " display incomplete commands
+set showmatch                   " highlight the ()
+set smartcase                   " ignore capital letters and child characters
+set smartindent                 " smart indent
+set smarttab                    " tab width
+set softtabstop=4               " tab width
+set spelllang=en,cjk            " do not check the Japanese spelling
+set t_Co=256                    " 256 color
+set tabstop=4                   " tab width
+set textwidth=0                 " maximum width of the input text
+set title                       " set the window title
+set vb t_vb=                    " do not beep
+set wildmenu                    " file name storage
+set wrap                        " wrap with a long line
+set wrapscan                    " when the search is finished, back to the top
+
+" Change the color after position 81
+execute "set colorcolumn=" . join(range(81, 999), ',')
+
+" Line number color
+highlight LineNr ctermfg=darkyellow
+
+" }}}
+
+" ------------------------------------------------------------------------------
+" Color Scheme: {{{2
+
 set background=dark             " dark background
 syntax enable
 colorscheme solarized
 let g:solarized_termtrans=1
 
+" }}}
 
-" Line number color
-highlight LineNr ctermfg=darkyellow
+" ------------------------------------------------------------------------------
+" Auto Command: {{{2
 
+augroup MyAutoCmd
 
-" unit.vim
+    " Do not comment out with a line feed
+    autocmd BufEnter * setlocal formatoptions-=r
+    autocmd BufEnter * setlocal formatoptions-=o
+
+    " Disable cursorline with insertmode
+    autocmd WinEnter,InsertLeave * set cursorline
+    autocmd WinLeave,InsertEnter * set nocursorline
+
+    " Do not display docstring
+    autocmd FileType python setlocal completeopt-=preview
+
+    " Check spelling when git commit message
+    autocmd FileType gitcommit setlocal nofoldenable spell
+
+augroup END
+
+" }}}
+
+" ------------------------------------------------------------------------------
+" Key Mappings: {{{2
+
+" Disable dangerous keys
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+
+" Switch j,k and gj,gk
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap gj j
+nnoremap gk k
+vnoremap gj j
+vnoremap gk k
+
+" Swap ; and :
+nnoremap ; :
+vnoremap ; :
+nnoremap q; q:
+vnoremap q; q:
+nnoremap : ;
+vnoremap : ;
+
+" Don't use Ex mode
+nnoremap Q gq
+
+" Move to beginning and end of line
+noremap <Space>h ^
+noremap <Space>l $
+
+" Quick save and quit
+" save
+nnoremap <silent> <Space>w :<C-u>update<CR>
+nnoremap <silent> <Space>W :<C-u>update!<CR>
+" quit
+nnoremap <silent> <Space>q :<C-u>quit<CR>
+nnoremap <silent> <Space>Q :<C-u>quit!<CR>
+
+" Auto input }])
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap ' ''<LEFT>
+inoremap ` ``<LEFT>
+inoremap " ""<LEFT>
+
+" Auto escape '/' and '?'
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
+cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+
+" }}}
+
+" }}}
+
+" ------------------------------------------------------------------------------
+" Plugins: {{{1
+
+" ------------------------------------------------------------------------------
+" Unit: {{{2
+
 " launch with Space + u
 nnoremap [unite]  <Nop>
 nmap     <Space>u [unite]
@@ -220,8 +245,11 @@ nnoremap <silent> [unite]o :<C-u>Unite bookmark<CR>
 nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
 nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
 
+" }}}
 
-" neomru.vim
+" ------------------------------------------------------------------------------
+" NeoMRU: {{{2
+
 " display limit
 let g:unite_source_file_mru_limit = 200
 " show date
@@ -231,16 +259,22 @@ let g:neomru#time_format = "%m/%d "
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 nnoremap <silent> [unite]d :<C-u>Unite directory_mru<CR>
 
+" }}}
 
-" NERDTree
+" ------------------------------------------------------------------------------
+" NERDTree: {{{2
+
 " launch with Space + n
 nnoremap <silent> <Space>n :<C-u>NERDTreeToggle<CR>
 " display dotfiles
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore     = ['\.git$', '\.DS_Store$']
 
+" }}}
 
-" vim-indent-guides
+" ------------------------------------------------------------------------------
+" Indent Guides: {{{2
+
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level=2
 let g:indent_guides_exclude_filetypes = ['nerdtree']
@@ -248,18 +282,31 @@ let g:indent_guides_auto_colors=0
 autocmd MyAutoCmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=240
 autocmd MyAutoCmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=245
 
+" }}}
 
-" vim-airline
+" ------------------------------------------------------------------------------
+" Airline: {{{2
+
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
 
+" }}}
 
-" jedi-vim
+" ------------------------------------------------------------------------------
+" Jedi: {{{2
+
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_definitions_command = "<leader>t"
 
+" }}}
 
-" syntastic
+" ------------------------------------------------------------------------------
+" Syntastic: {{{2
+
 let g:syntastic_python_checkers = ["flake8"]
+
+" }}}
+
+" }}}
