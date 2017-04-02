@@ -227,6 +227,9 @@ vnoremap : ;
 " Don't use Ex mode
 nnoremap Q gq
 
+" Esc
+inoremap jk <Esc>
+
 " Move to beginning and end of line
 noremap <Space>h ^
 noremap <Space>l $
