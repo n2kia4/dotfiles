@@ -169,8 +169,8 @@ augroup MyAutoCmd
     " Go
     autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 
-    " HTML, Haml
-    autocmd FileType html,haml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+    " HTML, Haml, htmldjango
+    autocmd FileType html,haml,htmldjango setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
 
     " JavaScript
     autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
