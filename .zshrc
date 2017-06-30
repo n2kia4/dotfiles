@@ -78,7 +78,8 @@ if [ -z "$TMUX" ]; then
         printf "\x1b[37mtmux: create new session? (y/N)\x1b[0m "
         read
         if [[ $REPLY =~ ^[Yy]$ || $REPLY == '' ]]; then
-            tmux new-session && echo "$(tmux -V) created new session"
+            tmux new-session \; source-file ~/.tmux/new-session && \
+            echo "$(tmux -V) created new session"
         else
             clear
         fi
