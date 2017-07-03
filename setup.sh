@@ -53,6 +53,7 @@ main() {
 
     . $DOTFILES_PATH/etc/symbolic_links.sh
     . $DOTFILES_PATH/etc/install/main.sh
+    . $DOTFILES_PATH/etc/preferences/main.sh
 
     change_login_shell
     reload_shell
