@@ -143,8 +143,9 @@ highlight LineNr ctermfg=darkyellow
 
 set background=dark             " dark background
 syntax enable
-colorscheme solarized
+let g:solarized_termcolors = 256
 let g:solarized_termtrans=1
+colorscheme solarized
 
 " }}}
 
