@@ -18,6 +18,7 @@ The setup list is this:
 - Install packages
 - Install Vim plugins
 - Update Vim plugins
+- System Preferences
 - Change the login shell
 
 ## Demo
