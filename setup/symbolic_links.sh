@@ -4,7 +4,7 @@
 DOTFILES_PATH="$HOME/dotfiles"
 
 # Load utils
-. $DOTFILES_PATH/etc/utils.sh
+. $DOTFILES_PATH/setup/utils.sh
 
 
 create_links() {

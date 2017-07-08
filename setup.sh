@@ -4,7 +4,7 @@
 DOTFILES_PATH="$HOME/dotfiles"
 
 # Load utils
-. $DOTFILES_PATH/etc/utils.sh
+. $DOTFILES_PATH/setup/utils.sh
 
 check_os() {
     os_name="$(uname)"
@@ -51,9 +51,9 @@ main() {
     check_os
     download_dotfiles
 
-    . $DOTFILES_PATH/etc/symbolic_links.sh
-    . $DOTFILES_PATH/etc/install/main.sh
-    . $DOTFILES_PATH/etc/preferences/main.sh
+    . $DOTFILES_PATH/setup/symbolic_links.sh
+    . $DOTFILES_PATH/setup/install/main.sh
+    . $DOTFILES_PATH/setup/preferences/main.sh
 
     change_login_shell
     reload_shell

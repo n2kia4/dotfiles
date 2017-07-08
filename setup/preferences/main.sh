@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Load utils
-. etc/utils.sh
+. setup/utils.sh
 
 print_title "---Preferences---"
 
@@ -153,7 +153,7 @@ terminal() {
     defaults write com.apple.terminal StringEncodings -array 4
 
     # Use a modified version of the Solarized Dark theme by default
-    . etc/preferences/set_solarized.applescript
+    . setup/preferences/set_solarized.applescript
 
     print_success "Terminal"
 }

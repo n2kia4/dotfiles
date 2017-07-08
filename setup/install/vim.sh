@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Load utils
-. etc/utils.sh
+. setup/utils.sh
 
 install_plugins() {
     print_message "Installing Vim plugins..."
