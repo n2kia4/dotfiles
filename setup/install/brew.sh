@@ -4,7 +4,7 @@
 . setup/utils.sh
 
 install_homebrew() {
-    print_title "---Homebrew---"
+    print_title "Homebrew"
     if type brew > /dev/null 2>&1; then
         print_warning "Homebrew: already installed"
     else
@@ -29,7 +29,7 @@ install_homebrew() {
 }
 
 install_packages() {
-    print_title "---Packages---"
+    print_title "Homebrew Packages"
     print_message "Installing packages..."
     packages=(
         autoconf coreutils git gitbucket go gtk+3 hub \

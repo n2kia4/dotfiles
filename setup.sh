@@ -15,7 +15,7 @@ check_os() {
 }
 
 download_dotfiles() {
-    print_title "---Download dotfiles---"
+    print_title "Download dotfiles"
     if [ -d $DOTFILES_PATH ]; then
         print_warning "dotfiles: already exists"
     else
@@ -31,7 +31,7 @@ download_dotfiles() {
 }
 
 change_login_shell() {
-    print_title "---zsh---"
+    print_title "Zsh"
     if [ $SHELL == $(which zsh) ]; then
         print_warning "Login shell: already zsh"
     else

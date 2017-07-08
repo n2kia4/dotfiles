@@ -3,7 +3,7 @@
 # Load utils
 . setup/utils.sh
 
-print_title "---Preferences---"
+print_title "System Preferences"
 
 dashboard() {
     # Disable Dashboard

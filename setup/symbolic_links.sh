@@ -23,7 +23,7 @@ create_links() {
 
 main() {
     cd $DOTFILES_PATH
-    print_title "---Create symbolic links---"
+    print_title "Create symbolic links"
     create_links
 }
 

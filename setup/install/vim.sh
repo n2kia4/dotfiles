@@ -22,7 +22,7 @@ update_plugins() {
 }
 
 main() {
-    print_title "---Vim---"
+    print_title "Vim"
 
     install_plugins
     update_plugins
