@@ -42,6 +42,15 @@ change_login_shell() {
     fi
 }
 
+reboot_system() {
+    print_title "Reboot System"
+    printf "Do you want to reboot the system? (y/n) "
+    read
+    if [[ $REPLY =~ ^[Yy]$ || $REPLY == '' ]]; then
+        sudo shutdown -r now &> /dev/null
+    fi
+}
+
 reload_shell() {
     printf "\n\n"
     exec $(which zsh)
@@ -56,6 +65,7 @@ main() {
     . $DOTFILES_PATH/setup/preferences/main.sh
 
     change_login_shell
+    reboot_system
     reload_shell
 }
 
