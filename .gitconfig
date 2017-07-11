@@ -17,3 +17,5 @@
   di = diff
   br = branch
   ls = ls-files
+[core]
+  editor = /usr/local/bin/vim
