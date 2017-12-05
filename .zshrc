@@ -38,7 +38,7 @@ SAVEHIST=100000
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 # Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+source $HOME/.cargo/env
 
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
