@@ -68,6 +68,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 
 " Rust
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 
 " Ruby / Ruby on Rails
 Plug 'tpope/vim-rails'
@@ -333,6 +334,13 @@ let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_definitions_command = "<leader>t"
 
 " }}}
+
+" ------------------------------------------------------------------------------
+" Rust_Racer: {{{2
+
+let g:racer_cmd = "$HOME/.cargo/bin/racer"
+
+"}}}
 
 " ------------------------------------------------------------------------------
 " Syntastic: {{{2
