@@ -336,6 +336,14 @@ let g:jedi#goto_definitions_command = "<leader>t"
 " }}}
 
 " ------------------------------------------------------------------------------
+" Rust_Vim: {{{2
+
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = "$HOME/.cargo/bin/rustfmt"
+
+"}}}
+
+" ------------------------------------------------------------------------------
 " Rust_Racer: {{{2
 
 let g:racer_cmd = "$HOME/.cargo/bin/racer"
