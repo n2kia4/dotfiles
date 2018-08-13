@@ -77,8 +77,8 @@ Plug 'tpope/vim-endwise'
 " Scala
 Plug 'derekwyatt/vim-scala'
 
-" Syntax
-Plug 'vim-syntastic/syntastic'
+" Asynchronous Lint Engine
+Plug 'w0rp/ale'
 
 " Colorscheme
 Plug 'altercation/vim-colors-solarized'
@@ -351,11 +351,10 @@ let g:racer_cmd = "$HOME/.cargo/bin/racer"
 "}}}
 
 " ------------------------------------------------------------------------------
-" Syntastic: {{{2
+" ALE: {{{2
 
-let g:syntastic_python_checkers = ["flake8"]
-let g:syntastic_rust_checkers = ["cargo"]
-
-" }}}
+"let g:ale_rust_cargo_use_check = 1
+let g:ale_linters = {'rust': ['cargo'], 'python': ['flake8']}
+"}}}
 
 " }}}
