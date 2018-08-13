@@ -338,7 +338,7 @@ let g:jedi#goto_definitions_command = "<leader>t"
 " ------------------------------------------------------------------------------
 " Rust_Vim: {{{2
 
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
 let g:rustfmt_command = "$HOME/.cargo/bin/rustfmt"
 
 "}}}
