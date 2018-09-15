@@ -144,52 +144,83 @@ colorscheme solarized
 " ------------------------------------------------------------------------------
 " Auto Command: {{{2
 
-augroup MyAutoCmd
+" Do not comment out with a line feed
+augroup autocommentoff
     autocmd!
-
-    " Do not comment out with a line feed
     autocmd BufEnter * setlocal formatoptions-=r
     autocmd BufEnter * setlocal formatoptions-=o
+augroup END
 
-    " Disable cursorline with insertmode
+" Disable cursorline with insertmode
+augroup cursorsetting
+    autocmd!
     autocmd WinEnter,InsertLeave * set cursorline
     autocmd WinLeave,InsertEnter * set nocursorline
-
-    " File Type: {{{3
-
-    " CSS
-    autocmd FileType css setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
-
-    " Go
-    autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
-
-    " HTML, Haml, htmldjango
-    autocmd FileType html,haml,htmldjango setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
-
-    " JavaScript
-    autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
-
-    " Python
-    autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 completeopt-=preview
-
-    " Ruby
-    autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
-
-    " Rust
-    autocmd FileType rust setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
-
-    " Sass
-    autocmd FileType scss setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
-
-    " Scala
-    autocmd FileType scala setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
-
-    " Check spelling when git commit message
-    autocmd FileType gitcommit setlocal nofoldenable spell
-
-    " }}}
-
 augroup END
+
+" File Type: {{{3
+
+" CSS
+augroup css
+    autocmd!
+    autocmd FileType css setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
+augroup END
+
+" Go
+augroup golang
+    autocmd!
+    autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+augroup END
+
+" HTML, Haml, htmldjango
+augroup htmlfile
+    autocmd!
+    autocmd FileType html,haml,htmldjango setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+augroup END
+
+" JavaScript
+augroup js
+    autocmd!
+    autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+augroup END
+
+" Python
+augroup python
+    autocmd!
+    autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 completeopt-=preview
+augroup END
+
+" Ruby
+augroup ruby
+    autocmd!
+    autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+augroup END
+
+" Rust
+augroup rust
+    autocmd!
+    autocmd FileType rust setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
+augroup END
+
+" Scss
+augroup scss
+    autocmd!
+    autocmd FileType scss setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+augroup END
+
+" Scala
+augroup scala
+    autocmd!
+    autocmd FileType scala setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+augroup END
+
+" Check spelling when git commit message
+augroup gitcommit
+    autocmd!
+    autocmd FileType gitcommit setlocal nofoldenable spell
+augroup END
+
+" }}}
 
 " }}}
 
@@ -304,8 +335,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level=2
 let g:indent_guides_exclude_filetypes = ['nerdtree']
 let g:indent_guides_auto_colors=0
-autocmd MyAutoCmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=240
-autocmd MyAutoCmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=245
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=240
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=245
 
 " }}}
 
