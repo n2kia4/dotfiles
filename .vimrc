@@ -14,15 +14,6 @@ scriptencoding utf-8
 " }}}
 
 " ------------------------------------------------------------------------------
-" Set Augroup: {{{2
-
-augroup MyAutoCmd
-    autocmd!
-augroup END
-
-" }}}"
-
-" ------------------------------------------------------------------------------
 " Vim Plug: {{{2
 
 " Disable file type detection
@@ -154,6 +145,7 @@ colorscheme solarized
 " Auto Command: {{{2
 
 augroup MyAutoCmd
+    autocmd!
 
     " Do not comment out with a line feed
     autocmd BufEnter * setlocal formatoptions-=r
