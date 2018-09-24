@@ -72,7 +72,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'w0rp/ale'
 
 " Colorscheme
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -135,9 +135,7 @@ highlight LineNr ctermfg=darkyellow
 
 set background=dark             " dark background
 syntax enable
-let g:solarized_termcolors = 256
-let g:solarized_termtrans=1
-colorscheme solarized
+colorscheme gruvbox
 
 " }}}
 
@@ -343,8 +341,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=245
 " ------------------------------------------------------------------------------
 " Airline: {{{2
 
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'gruvbox'
 
 " }}}
 
