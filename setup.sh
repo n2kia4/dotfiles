@@ -75,6 +75,9 @@ main() {
     . $DOTFILES_PATH/setup/preferences/main.sh
 
     download_tpm
+
+    ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
     change_login_shell
     reboot_system
     reload_shell
