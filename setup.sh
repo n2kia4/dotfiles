@@ -30,6 +30,16 @@ download_dotfiles() {
     fi
 }
 
+download_tpm() {
+    if [[ -d ~/.tmux/plugins/tpm ]]; then
+        print_werning "tpm: already exists"
+    else
+        print_message "Downloading tpm..."
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        print_success "successfully downloaded"
+    fi
+}
+
 change_login_shell() {
     print_title "Zsh"
     if [ $SHELL == $(which zsh) ]; then
@@ -64,6 +74,7 @@ main() {
     . $DOTFILES_PATH/setup/install/main.sh
     . $DOTFILES_PATH/setup/preferences/main.sh
 
+    download_tpm
     change_login_shell
     reboot_system
     reload_shell
