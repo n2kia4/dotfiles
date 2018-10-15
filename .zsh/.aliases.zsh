@@ -21,6 +21,7 @@ alias cb='cargo build'
 alias cbr='cargo build --release'
 alias cr='cargo run'
 alias crr='cargo run --release'
+alias ct='cargo test'
 
 # Ruby / Ruby on Rails
 alias b='bundle'
