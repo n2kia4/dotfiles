@@ -24,10 +24,10 @@ setopt prompt_subst
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
 # Alias
-source $HOME/.zsh/.aliases.zsh
+source $HOME/.zsh/aliases.zsh
 
 # Prompt
-source $HOME/.zsh/.prompt.zsh
+source $HOME/.zsh/prompt.zsh
 
 # history
 HISTFILE=$HOME/.zsh-history
