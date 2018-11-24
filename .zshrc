@@ -29,6 +29,9 @@ source $HOME/.zsh/aliases.zsh
 # Prompt
 source $HOME/.zsh/prompt.zsh
 
+# Functions
+source $HOME/.zsh/functions.zsh
+
 # history
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
@@ -85,21 +88,3 @@ if [ -z "$TMUX" ]; then
         fi
     fi
 fi
-
-
-# cd -> ls
-_cd_ls() {
-    gls -AF --color=auto
-}
-add-zsh-hook chpwd _cd_ls
-
-
-# Automatically activate and deactivate
-_auto_activate_deactivate() {
-    if [ -d venv ]; then
-        source venv/bin/activate
-    elif [ "$VIRTUAL_ENV" != "" ]; then
-        deactivate
-    fi
-}
-add-zsh-hook chpwd _auto_activate_deactivate
