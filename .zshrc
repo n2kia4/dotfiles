@@ -33,14 +33,6 @@ eval "$(rbenv init -)"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-# dircolors
-eval $(gdircolors ~/dircolors-solarized/dircolors.ansi-universal)
-
-if [ -n "$LS_COLORS" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-fi
-
-
 # Tmux
 if [ -z "$TMUX" ]; then
     if tmux has-session &>/dev/null && tmux list-sessions | grep -qE '.*]$'; then
