@@ -1,37 +1,10 @@
-# Language
-export LANG='en_US.UTF-8'
+# Load
+for file in ~/.zsh/*.zsh; do
+    source $file
+done
 
-# autoload
-source $HOME/.zsh/autoload.zsh
-
-# setopt
-source $HOME/.zsh/options.zsh
-
-# variable
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
-
-# Alias
-source $HOME/.zsh/aliases.zsh
-
-# Prompt
-source $HOME/.zsh/prompt.zsh
-
-# Functions
-source $HOME/.zsh/functions.zsh
-
-# Java
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-
-# Rust
-source $HOME/.cargo/env
-
-# Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+# direnv
+eval "$(direnv hook zsh)"
 
 # Tmux
 if [ -z "$TMUX" ]; then
